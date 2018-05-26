@@ -13,12 +13,20 @@ body {
 }
 .container {
     width: 620px;
-    height: 500px;
+    height: 608px;
     margin: 0 auto;
+    border-radius: 15px;
 }
 .header {
     background-color: #ff8663;
     color: #ffe3dd;
+    border-radius: 10px 10px 0 0;
+}
+
+.header_title {
+    padding: 15px;
+    font-weight: bold;
+    color: #fff;
 }
 #search {
     background-color: #f0f0f0;
@@ -51,4 +59,36 @@ body {
     height: 35px;
     background-image: url(./icons/logo.png);
     background-repeat: no-repeat;    
+}
+
+.lists {
+    background-color: #fff;
+    height: 400px;
+    display: flex;
+}
+
+#lists-left,
+#lists-right {
+    width: 50%;
+}
+
+#lists-left {
+    border-right: 1px solid #f0f0f0; 
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    background: #f0f0f0;
+    border-radius: 0 0 10px 10px;
+    padding: 8px;
+}
+
+#save {
+    background: #ff8663;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 8px 14px;
 }
