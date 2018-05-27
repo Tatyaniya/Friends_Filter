@@ -1,22 +1,26 @@
 * {
     box-sizing: border-box;
 }
+
 body {
     margin: 0;
     font-size: 16px;
     font-family: Verdana, sans-serif;
 }
+
 .wrapper {
     min-height: 100vh;
     background-color: #999999;
     padding-top: 130px;
 }
+
 .container {
     width: 620px;
     height: 608px;
     margin: 0 auto;
     border-radius: 15px;
 }
+
 .header {
     background-color: #ff8663;
     color: #ffe3dd;
@@ -28,15 +32,18 @@ body {
     font-weight: bold;
     color: #fff;
 }
+
 #search {
     background-color: #f0f0f0;
     display: flex;
     
 }
+
 .searching {
     width: 50%;
     padding: 10px;
 }
+
 #search input {
     padding: 8px;
     padding-left: 28px;
@@ -48,12 +55,14 @@ body {
     background-repeat: no-repeat;
     background-position: 6px;
 }
+
 .logo {
     display: flex;
     justify-content: center;
     padding-top: 10px;
     margin-bottom: 15px;
 }
+
 .logo_img {
     width: 100px;
     height: 35px;
@@ -70,10 +79,30 @@ body {
 #lists-left,
 #lists-right {
     width: 50%;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 #lists-left {
     border-right: 1px solid #f0f0f0; 
+}
+
+.text {
+    color: #4f4f4f;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 13px 0 6px 3px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.friend {
+    display: flex;
+    padding: 8px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.friend:hover {
+    background: #f0f0f0;
 }
 
 .footer {
