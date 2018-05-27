@@ -2,7 +2,7 @@ import './style.css';
 require('../index.hbs');
 
 VK.init({
-    apiId: 6490248
+    apiId: 6491828
 });
 
 function auth() {
