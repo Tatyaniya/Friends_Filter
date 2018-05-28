@@ -20,7 +20,7 @@
         <section class="lists">
             <div id="lists-left">
                 <div class="text">Ваши друзья</div>
-                
+                {{> "friends.hbs"}}
             </div>
             <div id="lists-right">
                 <div class="text">Друзья в списке</div>
@@ -30,15 +30,5 @@
         <footer class="footer">
             <button id="save">Сохранить</button>
         </footer>
-        <script id="user-template" type="text/x-handlebars-template">
-            <div class="friends">
-                {{#each items}}
-                <div class="friend">
-                    <img src="{{photo_50}}"/>
-                    <div>{{first_name}} {{last_name}}</div>
-                </div>
-                {{/each}}
-            </div>
-        </script>
     </div>
 </div>
