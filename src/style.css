@@ -25,6 +25,8 @@ body {
     background-color: #ff8663;
     color: #ffe3dd;
     border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .header_title {
@@ -33,10 +35,23 @@ body {
     color: #fff;
 }
 
+#delete {
+    background: #fff;
+    color: #ff8663;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 7px 14px;
+    margin: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
 #search {
     background-color: #f0f0f0;
-    display: flex;
-    
+    display: flex;    
 }
 
 .searching {
@@ -126,10 +141,12 @@ body {
 }
 
 .friend_plus {
+    width: 16px;
     height: 16px;
     position: absolute;
     right: 6px;
     top: 20px;
+    cursor: pointer;
 }
 
 .footer {
