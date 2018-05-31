@@ -66,7 +66,7 @@ body {
     border-radius: 15px;
     width: 100%;
     border: none;
-    background-image: url(./icons/search.png);
+    background-image: url(../icons/search.png);
     background-repeat: no-repeat;
     background-position: 6px;
 }
@@ -81,7 +81,7 @@ body {
 .logo_img {
     width: 100px;
     height: 35px;
-    background-image: url(./icons/logo.png);
+    background-image: url(../icons/logo.png);
     background-repeat: no-repeat;    
 }
 
