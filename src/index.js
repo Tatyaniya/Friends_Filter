@@ -6,8 +6,6 @@ var listsLeft = document.getElementById('lists-left'),
     notSelected = [], // массив полученных друзей
     selected = []; // массив выбранных друзей
 
-    console.log(notSelected);
-
 let templates = require('../index.hbs');
 
 import { filter } from './js/filter';
@@ -48,31 +46,61 @@ promise
     })
     .then((data) => {
         notSelected = data.items;
-        console.log(notSelected);
         var template = templateFunc({ items: data.items });
 
         listsLeft.innerHTML = template;
     }) 
-    console.log(notSelected);
 
 listsLeft.addEventListener('click', (e) => {
     let target = e.target;
-
+    console.log(target);
     if (target.tagName === 'IMG' && target.getAttribute('alt') === 'plus') {
-        // target.parentNode.classList.add('hidden');
-        //target.parentNode.parentNode.removeChild(target.parentNode);
-        let id = target.dataset.id; // получить id пользователя
-        console.log(id);
+        let id = target.dataset.id;
 
-        for (let i = 0; i < notSelected.length; i++) {
-            if (notSelected[i].id == id) {
-                return i;
-                console.log(i);
-            }
-        }
-
-        console.log(i);
-        notSelected.splice(indexOf[i], 1);
-        selected.push[i];
+        calcNewState('add', id);
+        console.log(selected);
+        console.log(notSelected);
     }
 })
+
+function calcNewState(action, id) {
+    if (action === 'add') {
+        const result = notSelected.reduce((res, current) => {
+
+            if (current.id === id) {
+                res.selected.push(current);
+
+                return res;
+            }
+            res.notSelected.push(current);
+
+            return res;
+        }, {
+            notSelected: [],
+            selected: []
+        })
+  
+        notSelected = [...result.notSelected];
+        selected = [...selected, result.selected];
+    }
+
+    if (action === 'remove') {
+        const result = selected.reduce((res, current) => {
+
+            if (current.id === id) {
+                res.notSelected.push(current);
+
+                return res;
+            }
+            res.selected.push(current);
+
+            return res;
+        }, {
+            notSelected: [],
+            selected: []
+        })
+  
+        notSelected = [...notSelected, result.notSelected];
+        selected = [...result.selected];
+    }
+}
