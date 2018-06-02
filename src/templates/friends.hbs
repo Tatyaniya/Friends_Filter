@@ -1,6 +1,6 @@
     {{#each items}}
-    <li class="friend" name={{id}}>
-        <img class="friend_img" src="{{photo_100}}"/>
+    <li class="friend" name={{id}} draggable="true">
+        <img class="friend_img" src="{{photo_100}}" draggable="false">
         <div class="friend_text">{{first_name}} {{last_name}}</div>    
         <img src="src/icons/plus.png" alt="plus" data-id="{{id}}" class="friend_plus">  
     </li>

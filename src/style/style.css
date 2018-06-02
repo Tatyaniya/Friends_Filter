@@ -95,6 +95,15 @@ ul {
     padding-left: 15px;
     padding-right: 15px;
     overflow: auto;
+    height: 370px;
+}
+
+#lists-left .friend {
+    cursor: move;
+}
+
+#lists-right .friend_plus {
+    transform: rotate(45deg);
 }
 
 .left {
@@ -155,7 +164,4 @@ ul {
     border-radius: 10px;
     font-size: 14px;
     padding: 8px 14px;
-}
-.hidden {
-    display: none;
 }
