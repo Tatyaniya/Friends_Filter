@@ -1,8 +1,12 @@
 import './style/style.css';
 import templateFunc from './templates/friends.hbs';
-let listsLeft = document.getElementById('lists-left'),
+var listsLeft = document.getElementById('lists-left'),
     listRight = document.getElementById('lists-right'),
-    save = document.getElementById('save');
+    save = document.getElementById('save'),
+    notSelected = [], // массив полученных друзей
+    selected = []; // массив выбранных друзей
+
+    console.log(notSelected);
 
 let templates = require('../index.hbs');
 
@@ -43,21 +47,32 @@ promise
         return callAPI('friends.get', { v: 5.76, fields: 'first_name, last_name, photo_100' }); 
     })
     .then((data) => {
-        window.friends = data.items;
-        window.selectedFriends = [];
-        console.log(friends);
+        notSelected = data.items;
+        console.log(notSelected);
         var template = templateFunc({ items: data.items });
 
         listsLeft.innerHTML = template;
     }) 
+    console.log(notSelected);
 
 listsLeft.addEventListener('click', (e) => {
     let target = e.target;
 
     if (target.tagName === 'IMG' && target.getAttribute('alt') === 'plus') {
         // target.parentNode.classList.add('hidden');
-        target.parentNode.parentNode.removeChild(target.parentNode);
-        
-        window.selectedFriends.push(target.parentNode);
+        //target.parentNode.parentNode.removeChild(target.parentNode);
+        let id = target.dataset.id; // получить id пользователя
+        console.log(id);
+
+        for (let i = 0; i < notSelected.length; i++) {
+            if (notSelected[i].id == id) {
+                return i;
+                console.log(i);
+            }
+        }
+
+        console.log(i);
+        notSelected.splice(indexOf[i], 1);
+        selected.push[i];
     }
 })
