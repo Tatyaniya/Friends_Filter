@@ -91,7 +91,7 @@ function render() {
     
 }
 
-// ДНД
+// ДНД слева направо
 listsLeft.addEventListener('dragstart', (e) => {
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData("Text", e.target.querySelector('.friend_plus').dataset.id );
@@ -117,6 +117,35 @@ listsRight.addEventListener('dragover', (e) => {
 })
 
 listsLeft.addEventListener('dragend', (e) => {
+    e.preventDefault();
+})
+
+// ДНД справа налево
+listsRight.addEventListener('dragstart', (e) => {
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData("Text", e.target.querySelector('.friend_plus').dataset.id );
+})
+
+listsLeft.addEventListener('drop', (e) => {
+    const userId = e.dataTransfer.getData("Text");
+
+    calcNewState('remove', userId);
+    render();
+})
+
+listsLeft.addEventListener('dragenter', (e) => {
+    e.preventDefault();
+})
+
+listsLeft.addEventListener('dragleave', (e) => {
+    e.preventDefault();
+})
+
+listsLeft.addEventListener('dragover', (e) => {
+    e.preventDefault();
+})
+
+listsRight.addEventListener('dragend', (e) => {
     e.preventDefault();
 })
 
