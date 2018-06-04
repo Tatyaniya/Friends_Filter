@@ -169,14 +169,14 @@ function searchAffect(which) {
         let value = searchLeft.value;
 
         return notSelected.filter((friend) => {
-            return isMatching(friend.first_name, value); 
+            return isMatching(friend.first_name, value) || isMatching(friend.last_name, value); 
         })
     }
     if (which === 'right') {
         let value = searchRight.value;
 
         return selected.filter((friend) => {
-            return isMatching(friend.first_name, value); 
+            return isMatching(friend.first_name, value) || isMatching(friend.last_name, value); 
         })
     }
 }
