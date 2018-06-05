@@ -1,3 +1,9 @@
+import notSelected from '../index.js';
+import selected from '../index.js';
+import searchLeft from '../index.js';
+import searchRight from '../index.js';
+
+// встречается ли подстрока chunk в строке full
 function isMatching(full, chunk) {
     if (full.toLowerCase().includes(chunk.toLowerCase())) {
         return true;
@@ -6,6 +12,25 @@ function isMatching(full, chunk) {
     return false;    
 }
 
+// фильтрация
+function searchAffect(which) {
+    if (which === 'left') {
+        let value = searchLeft.value;
+
+        return notSelected.filter((friend) => {
+            return isMatching(friend.first_name, value) || isMatching(friend.last_name, value); 
+        })
+    }
+    if (which === 'right') {
+        let value = searchRight.value;
+
+        return selected.filter((friend) => {
+            return isMatching(friend.first_name, value) || isMatching(friend.last_name, value); 
+        })
+    }
+}
+
 export {
-    isMatching
+    isMatching,
+    searchAffect
 }

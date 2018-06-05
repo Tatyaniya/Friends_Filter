@@ -1,6 +1,10 @@
 import './style/style.css';
 import templateFunc from './templates/friends.hbs';
-import { isMatching } from './js/filter';
+import { isMatching, searchAffect } from './js/filter';
+import { calcNewState } from './js/calcNewState.js';
+import { dndLeft, dndRight } from './js/dnd.js';
+dndLeft();
+dndRight();
 
 var templates = require('../index.hbs'),
     listsLeft = document.getElementById('lists-left'),
@@ -91,125 +95,7 @@ function render() {
     
 }
 
-// ДНД слева направо
-listsLeft.addEventListener('dragstart', (e) => {
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData("Text", e.target.querySelector('.friend_plus').dataset.id );
-})
-
-listsRight.addEventListener('drop', (e) => {
-    const userId = e.dataTransfer.getData("Text");
-
-    calcNewState('add', userId);
-    render();
-})
-
-listsRight.addEventListener('dragenter', (e) => {
-    e.preventDefault();
-})
-
-listsRight.addEventListener('dragleave', (e) => {
-    e.preventDefault();
-})
-
-listsRight.addEventListener('dragover', (e) => {
-    e.preventDefault();
-})
-
-listsLeft.addEventListener('dragend', (e) => {
-    e.preventDefault();
-})
-
-// ДНД справа налево
-listsRight.addEventListener('dragstart', (e) => {
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData("Text", e.target.querySelector('.friend_plus').dataset.id );
-})
-
-listsLeft.addEventListener('drop', (e) => {
-    const userId = e.dataTransfer.getData("Text");
-
-    calcNewState('remove', userId);
-    render();
-})
-
-listsLeft.addEventListener('dragenter', (e) => {
-    e.preventDefault();
-})
-
-listsLeft.addEventListener('dragleave', (e) => {
-    e.preventDefault();
-})
-
-listsLeft.addEventListener('dragover', (e) => {
-    e.preventDefault();
-})
-
-listsRight.addEventListener('dragend', (e) => {
-    e.preventDefault();
-})
-
-// добавление/удаление элементов в массивы
-function calcNewState(action, id) {
-    if (action === 'add') {
-        const result = notSelected.reduce((res, current) => {
-
-            if (current.id == id) {
-                res.selected.push(current);
-
-                return res;
-            }
-            res.notSelected.push(current);
-
-            return res;
-        }, {
-            notSelected: [],
-            selected: []
-        })
-  
-        notSelected = [...result.notSelected];
-        selected = [...selected, ...result.selected];
-    }
-
-    if (action === 'remove') {
-        const result = selected.reduce((res, current) => {
-
-            if (current.id == id) {
-                res.notSelected.push(current);
-
-                return res;
-            }
-            res.selected.push(current);
-
-            return res;
-        }, {
-            notSelected: [],
-            selected: []
-        })
-  
-        notSelected = [...notSelected, ...result.notSelected];
-        selected = [...result.selected];
-    }
-}
-
-// фильтрация
-function searchAffect(which) {
-    if (which === 'left') {
-        let value = searchLeft.value;
-
-        return notSelected.filter((friend) => {
-            return isMatching(friend.first_name, value) || isMatching(friend.last_name, value); 
-        })
-    }
-    if (which === 'right') {
-        let value = searchRight.value;
-
-        return selected.filter((friend) => {
-            return isMatching(friend.first_name, value) || isMatching(friend.last_name, value); 
-        })
-    }
-}
-
+// поиск
 searchLeft.addEventListener('keyup', () => {
     render();
 })
@@ -229,4 +115,9 @@ function saveToLocalStorage() {
 
 save.addEventListener('click', (e) => {
     saveToLocalStorage();
-})  
+})
+
+export {
+    render,
+    calcNewState
+}
