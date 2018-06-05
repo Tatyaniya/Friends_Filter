@@ -1,8 +1,3 @@
-import { calcNewState } from './js/calcNewState.js';
-import { render } from '../index.js';
-import listsLeft from '../index.js';
-import listsRight from '../index.js';
-
 // ДНД слева направо
 function dndLeft() {
     listsLeft.addEventListener('dragstart', (e) => {

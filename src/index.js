@@ -6,7 +6,7 @@ import { dndLeft, dndRight } from './js/dnd.js';
 dndLeft();
 dndRight();
 
-var templates = require('../index.hbs'),
+let templates = require('../index.hbs'),
     listsLeft = document.getElementById('lists-left'),
     listsRight = document.getElementById('lists-right'),
     searchLeft = document.getElementById('search-left'),

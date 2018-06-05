@@ -1,6 +1,3 @@
-import notSelected from '../index.js';
-import selected from '../index.js';
-
 // добавление/удаление элементов в массивы
 function calcNewState(action, id) {
     if (action === 'add') {

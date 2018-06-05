@@ -1,8 +1,3 @@
-import notSelected from '../index.js';
-import selected from '../index.js';
-import searchLeft from '../index.js';
-import searchRight from '../index.js';
-
 // встречается ли подстрока chunk в строке full
 function isMatching(full, chunk) {
     if (full.toLowerCase().includes(chunk.toLowerCase())) {
